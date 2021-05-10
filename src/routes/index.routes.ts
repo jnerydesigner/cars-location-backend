@@ -1,10 +1,11 @@
-import { Request, Response } from 'express';
-import CreateDogService from '../services/CreateDogService';
+import { Router } from "express";
 
-export function createDog(request: Request, response: Response) {
-  const { name, breed } = request.body;
+import { categoriesRoutes } from "./categories.routes";
+import { specificationsRoutes } from "./specifications.routes";
 
-  const dog = CreateDogService.execute({ name, breed });
+const router = Router();
 
-  return response.send(dog);
-}
+router.use("/categories", categoriesRoutes);
+router.use("/specifications", specificationsRoutes);
+
+export { router };
