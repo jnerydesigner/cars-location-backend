@@ -6,8 +6,8 @@ import { ListSpecificationsUseCase } from './ListSpecificationsUseCase'
 class ListSpecificationController {
   constructor(private listSpecificationsUseCase: ListSpecificationsUseCase) { }
 
-  handle(request: Request, response: Response): Response {
-    const specification = this.listSpecificationsUseCase.execute();
+  async handle(request: Request, response: Response): Promise<Response> {
+    const specification = await this.listSpecificationsUseCase.execute();
 
     return response.status(201).json({ specification });
   }

@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { Specification } from "../../model/Specification";
+import { Specification } from "../../entities/Specification";
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 class ListSpecificationsUseCase {
   constructor(private specificationRepository: ISpecificationsRepository) { }
 
-  execute(): Specification[] {
-    const specification = this.specificationRepository.list();
+  async execute(): Promise<Specification[]> {
+    const specification = await this.specificationRepository.list();
 
     return specification;
   }

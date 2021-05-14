@@ -2,14 +2,16 @@ import { SpecificationRepository } from "../../repositories/implementations/Spec
 import { CreateEspecificationController } from "./CreateEspecificationController";
 import { CreateSpecificationsUseCase } from "./CreateSpecificationsUseCase";
 
-const specifictionRepository = new SpecificationRepository();
+export default (): CreateEspecificationController => {
+  const specifictionRepository = new SpecificationRepository();
 
-const createSpecificationUseCase = new CreateSpecificationsUseCase(
-  specifictionRepository
-);
+  const createSpecificationUseCase = new CreateSpecificationsUseCase(
+    specifictionRepository
+  );
 
-const createSpecificationController = new CreateEspecificationController(
-  createSpecificationUseCase
-);
+  const createSpecificationController = new CreateEspecificationController(
+    createSpecificationUseCase
+  );
 
-export { createSpecificationController };
+  return createSpecificationController;
+};

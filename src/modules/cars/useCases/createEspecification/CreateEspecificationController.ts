@@ -7,10 +7,10 @@ class CreateEspecificationController {
   constructor(
     private createEspecificationUseCase: CreateSpecificationsUseCase
   ) { }
-  handle(req: Request, res: Response): Response {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { name, description } = req.body;
 
-    this.createEspecificationUseCase.execute({ name, description });
+    await this.createEspecificationUseCase.execute({ name, description });
 
     return res
       .status(201)
