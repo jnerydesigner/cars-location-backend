@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { inject, injectable } from 'tsyringe'
 
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
@@ -8,9 +9,12 @@ interface IRequest {
   description: string;
 }
 
-
+@injectable()
 class CreateSpecificationsUseCase {
-  constructor(private specificationsRepository: ISpecificationsRepository) { }
+  constructor(
+    @inject("SpecificationRepository")
+    private specificationsRepository: ISpecificationsRepository
+  ) { }
   async execute({ name, description }: IRequest): Promise<void> {
     const specificationAlreadyExists = await this.specificationsRepository.findByNameSpecification(
       name
