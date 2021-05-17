@@ -16,6 +16,7 @@ class ListCategoriesController {
 
 
     return response.status(201).json({ categories });
+
   }
 }
 

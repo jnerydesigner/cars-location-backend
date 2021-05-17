@@ -8,7 +8,8 @@
     "password": "ignite",
     "database": "rentx",
     "entities": [
-      "./src/modules/cars/entities/*.ts"
+      "./src/modules/cars/entities/*.ts",
+      "./src/modules/account/entities/*.ts"
     ],
     "migrations": [
       "./src/database/migrations/*.ts"

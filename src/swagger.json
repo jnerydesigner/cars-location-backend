@@ -9,6 +9,56 @@
     }
   },
   "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create a new User",
+        "description": "Create a new User on the table users",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "driver_license": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "name user sample",
+                  "username": "username user sample",
+                  "password": "password user sample",
+                  "email": "email user sample",
+                  "driver_license": "Driver_license user sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "User Already exists"
+          }
+        }
+      }
+    },
     "/categories": {
       "post": {
         "tags": [

@@ -11,22 +11,26 @@ class UsersRepository implements IUsersRepositories {
     this.repository = getRepository(User);
   }
 
-  async findByUserName(username: string): Promise<User> {
-    const user = await this.repository.findOne({ username });
+  async list(): Promise<User[]> {
+    const users = await this.repository.find();
+
+    return users;
+  }
+
+  async findByUserEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({ email });
 
     return user;
   }
 
   async create({
     name,
-    username,
     email,
     driver_license,
     password,
   }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
       name,
-      username,
       email,
       driver_license,
       password,
